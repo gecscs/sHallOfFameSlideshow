@@ -36,7 +36,7 @@
       <Value Profile="(Default)">4554</Value>
     </Setting>
     <Setting Name="SlideShowInterval" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">60</Value>
     </Setting>
   </Settings>
 </SettingsFile>

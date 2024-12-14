@@ -157,7 +157,7 @@ namespace HallOfFameSlideshow.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
         public int SlideShowInterval {
             get {
                 return ((int)(this["SlideShowInterval"]));

@@ -345,7 +345,7 @@ namespace HallOfFameSlideshow
                         CurrentImageHistoryIndex = CurrentImageHistoryIndex + 1;
                     }
 
-                    // Wait for 10 seconds before loading the next image
+                    // Wait for XX seconds before loading the next image
                     await Task.Delay(Properties.Settings.Default.SlideShowInterval * 1000, cancellationToken); // delay based on settings property
                 }
                 catch (OperationCanceledException)
