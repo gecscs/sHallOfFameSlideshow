@@ -4,9 +4,108 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HallOfFameSlideshow"
+        xmlns:fa="http://schemas.fontawesome.com/wpf" xmlns:fa1="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="800"
+        WindowStyle="None" 
+        AllowsTransparency="True" 
+        Background="Black">
+
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="IconOnlyButtonStyle">
+            <!-- Remove default background and border -->
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <!-- ContentPresenter is used to display the button's content (icon) -->
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid>
+                        <!-- Triggers to suppress background/border on hover, press, and focus -->
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Transparent" />
+                                <Setter Property="BorderBrush" Value="Transparent" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="Transparent" />
+                                <Setter Property="BorderBrush" Value="Transparent" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.5" />
+                                <!-- Dim the button if disabled -->
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
+        <!-- Custom top bar for dragging -->
+        <Border Name="TopBar" Background="#2d2d2d" Height="30" VerticalAlignment="Top" MouseDown="TopBar_MouseDown" Margin="0,0,0,30">
+            <Grid>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="Citites: Skylines 2 - Hall Of Fame image slideshow" />
+                <!-- Maximize Button -->
+                <Button Name="btnToggleMaximize" Style="{StaticResource IconOnlyButtonStyle}" HorizontalAlignment="Right" VerticalAlignment="Center" Width="30" Height="30" Margin="0,0,50,0" Background="Transparent" BorderBrush="Transparent" Padding="0" Click="btnToggleMaximize_Click">
+                    <fa1:FontAwesome Icon="{Binding MaxMinIcon}" FontSize="24" Foreground="White" />
+                </Button>
+                <!-- Close Button -->
+                <Button Name="btnClose" Style="{StaticResource IconOnlyButtonStyle}" HorizontalAlignment="Right" VerticalAlignment="Center" Width="30" Height="30" Margin="0,0,10,0" Background="Transparent" BorderBrush="Transparent" Padding="0" Click="btnClose_Click">
+                    <fa1:FontAwesome Icon="TimesCircle" FontSize="24" Foreground="White" />
+                </Button>
+
+            </Grid>
+        </Border>
+
+        <Grid Margin="0,30,0,0">
+            <!-- Loader (ProgressBar) -->
+            <ProgressBar Name="Loader" IsIndeterminate="True" VerticalAlignment="Center" HorizontalAlignment="Center" Width="50" Height="50" Visibility="Collapsed" Panel.ZIndex="999"/>
+            <!-- Image -->
+            <Image Name="SlideshowImage" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+            <!-- Semi-Transparent Info Block -->
+            <Border Name="InfoBlock" Background="#60000000" Width="180" Height="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">
+                <StackPanel Margin="10">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Name="CityName" Foreground="White" FontWeight="Bold" FontSize="14"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="by: " VerticalAlignment="Bottom" Foreground="White" FontWeight="Bold" FontSize="10"/>
+                        <TextBlock Name="CityCreator" VerticalAlignment="Bottom" Foreground="White" FontSize="12"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="views: " VerticalAlignment="Bottom" Foreground="White" FontWeight="Bold" FontSize="10"/>
+                    <TextBlock Name="ImageViews" Foreground="White" FontSize="10"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="likes: " VerticalAlignment="Bottom" Foreground="White" FontWeight="Bold" FontSize="10"/>
+                        <TextBlock Name="ImageLikes" VerticalAlignment="Bottom" Foreground="White" FontSize="10"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="added: " VerticalAlignment="Bottom" Foreground="White" FontWeight="Bold" FontSize="10"/>
+                        <TextBlock Name="ImageCreatedOn" VerticalAlignment="Bottom" Foreground="White" FontSize="10"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10">
+            <Button x:Name="btnPrevious" Style="{StaticResource IconOnlyButtonStyle}" HorizontalAlignment="Left" Width="50" Margin="38,0,0,0" VerticalAlignment="Center" Click="btnPrevious_ClickAsync" Background="Transparent" BorderBrush="Transparent" Padding="0">
+                <fa1:FontAwesome Icon="ChevronCircleLeft" FontSize="24" Foreground="White" />
+            </Button>
+            <Button x:Name="BtnPlay" Style="{StaticResource IconOnlyButtonStyle}" HorizontalAlignment="Left" Width="50" Margin="38,0,0,0" VerticalAlignment="Center" Click="BtnPlay_Click" Background="Transparent" BorderBrush="Transparent" Padding="0">
+                <fa1:FontAwesome Icon="{Binding PlayPauseIcon}" FontSize="24" Foreground="White" />
+            </Button>
+            <Button x:Name="btnNext" Style="{StaticResource IconOnlyButtonStyle}" HorizontalAlignment="Left" Width="50" Margin="38,0,0,0" VerticalAlignment="Center" Click="btnNext_ClickAsync" Background="Transparent" BorderBrush="Transparent" Padding="0">
+                <fa1:FontAwesome Icon="ChevronCircleRight" FontSize="24" Foreground="White" />
+            </Button>
+        </StackPanel>
+
 
     </Grid>
 </Window>
