@@ -24,16 +24,16 @@
       <Value Profile="(Default)">https://halloffame.cs2.mtq.io/api/v1/screenshots/weighted</Value>
     </Setting>
     <Setting Name="CreatorName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0belix</Value>
+      <Value Profile="(Default)">[YOUR_USERNAME]</Value>
     </Setting>
     <Setting Name="CreatorId" Type="System.String" Scope="User">
-      <Value Profile="(Default)">319c6c50-9143-48fb-beba-152324af0536</Value>
+      <Value Profile="(Default)">[YOUR_CREATORID]</Value>
     </Setting>
     <Setting Name="Provider" Type="System.String" Scope="User">
       <Value Profile="(Default)">paradox</Value>
     </Setting>
     <Setting Name="HWID" Type="System.String" Scope="User">
-      <Value Profile="(Default)">4554</Value>
+      <Value Profile="(Default)">[YOUR_HARDWAREID]</Value>
     </Setting>
     <Setting Name="SlideShowInterval" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">60</Value>
