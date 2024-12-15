@@ -109,7 +109,7 @@ namespace HallOfFameSlideshow.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0belix")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string CreatorName {
             get {
                 return ((string)(this["CreatorName"]));
@@ -121,7 +121,7 @@ namespace HallOfFameSlideshow.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("319c6c50-9143-48fb-beba-152324af0536")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string CreatorId {
             get {
                 return ((string)(this["CreatorId"]));
@@ -145,7 +145,7 @@ namespace HallOfFameSlideshow.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("4554")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string HWID {
             get {
                 return ((string)(this["HWID"]));
