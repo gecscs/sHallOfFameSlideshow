@@ -9,7 +9,8 @@
         Title="MainWindow" Height="500" Width="800"
         WindowStyle="None" 
         AllowsTransparency="True" 
-        Background="Black">
+        Background="Black"
+        PreviewKeyDown="Window_PreviewKeyDown">
 
     <Window.Resources>
         <Style TargetType="Button" x:Key="IconOnlyButtonStyle">
@@ -75,6 +76,10 @@
                         <TextBlock Name="CityName" Foreground="White" FontWeight="Bold" FontSize="14"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="pop.: " VerticalAlignment="Bottom" Foreground="White" FontWeight="Bold" FontSize="10"/>
+                        <TextBlock Name="CityPopulation" Foreground="White" FontWeight="Bold" FontSize="12"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
                         <TextBlock Text="by: " VerticalAlignment="Bottom" Foreground="White" FontWeight="Bold" FontSize="10"/>
                         <TextBlock Name="CityCreator" VerticalAlignment="Bottom" Foreground="White" FontSize="12"/>
                     </StackPanel>
@@ -98,7 +103,7 @@
             <Button x:Name="btnPrevious" Style="{StaticResource IconOnlyButtonStyle}" HorizontalAlignment="Left" Width="50" Margin="38,0,0,0" VerticalAlignment="Center" Click="btnPrevious_ClickAsync" Background="Transparent" BorderBrush="Transparent" Padding="0">
                 <fa1:FontAwesome Icon="ChevronCircleLeft" FontSize="24" Foreground="White" />
             </Button>
-            <Button x:Name="BtnPlay" Style="{StaticResource IconOnlyButtonStyle}" HorizontalAlignment="Left" Width="50" Margin="38,0,0,0" VerticalAlignment="Center" Click="BtnPlay_Click" Background="Transparent" BorderBrush="Transparent" Padding="0">
+            <Button x:Name="btnPlay" Style="{StaticResource IconOnlyButtonStyle}" HorizontalAlignment="Left" Width="50" Margin="38,0,0,0" VerticalAlignment="Center" Click="btnPlay_Click" Background="Transparent" BorderBrush="Transparent" Padding="0">
                 <fa1:FontAwesome Icon="{Binding PlayPauseIcon}" FontSize="24" Foreground="White" />
             </Button>
             <Button x:Name="btnNext" Style="{StaticResource IconOnlyButtonStyle}" HorizontalAlignment="Left" Width="50" Margin="38,0,0,0" VerticalAlignment="Center" Click="btnNext_ClickAsync" Background="Transparent" BorderBrush="Transparent" Padding="0">

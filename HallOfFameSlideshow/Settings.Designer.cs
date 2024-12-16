@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HallOfFameSlideshow.Properties {
+namespace HallOfFameSlideshow {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

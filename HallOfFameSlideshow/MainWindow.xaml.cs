@@ -12,7 +12,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Text.Json;
 using static System.Net.Mime.MediaTypeNames;
-using HallOfFameSlideshow.Properties;
+using HallOfFameSlideshow;
 using System.ComponentModel;
 
 namespace HallOfFameSlideshow
@@ -109,17 +109,17 @@ namespace HallOfFameSlideshow
             try
             {
                 // Replace with your API endpoint URL
-                string apiUrl = Properties.Settings.Default.GetRandomWeightedImageApiEndpoint;
+                string apiUrl = Settings.Default.GetRandomWeightedImageApiEndpoint;
 
                 // Add any properties required for the request
                 var requestData = new
                 {
-                    random = Properties.Settings.Default.RandomValue,
-                    trending = Properties.Settings.Default.TrendingValue,
-                    recent = Properties.Settings.Default.RecentValue,
-                    archeologist = Properties.Settings.Default.ArcheologistValue,
-                    supporter = Properties.Settings.Default.SupporterValue,
-                    viewMaxAge = Properties.Settings.Default.ViewMaxAgeValue
+                    random = Settings.Default.RandomValue,
+                    trending = Settings.Default.TrendingValue,
+                    recent = Settings.Default.RecentValue,
+                    archeologist = Settings.Default.ArcheologistValue,
+                    supporter = Settings.Default.SupporterValue,
+                    viewMaxAge = Settings.Default.ViewMaxAgeValue
                 };
 
 
@@ -142,6 +142,7 @@ namespace HallOfFameSlideshow
 
                     CityName.Text = image.CityName;
                     CityCreator.Text = image.Creator.CreatorName;
+                    CityPopulation.Text = image.CityPopulation.ToString();
                     ImageViews.Text = image.ViewsCount.ToString();
                     ImageLikes.Text = image.FavoritesCount.ToString();
                     ImageCreatedOn.Text = image.CreatedAt.ToString("yyyy-MM-dd");
@@ -182,7 +183,7 @@ namespace HallOfFameSlideshow
                 using (var request = new HttpRequestMessage(HttpMethod.Get, apiUrl))
                 {
                     // Add Authorization header
-                    request.Headers.Add("Authorization", "Creator name=" + Properties.Settings.Default.CreatorName + "&id=" + Properties.Settings.Default.CreatorId + "&provider=" + Properties.Settings.Default.Provider + "&hwid=" + Properties.Settings.Default.HWID);
+                    request.Headers.Add("Authorization", "Creator name=" + Settings.Default.CreatorName + "&id=" + Settings.Default.CreatorId + "&provider=" + Settings.Default.Provider + "&hwid=" + Settings.Default.HWID);
 
                     // Send the request using the static HttpClient
                     HttpResponseMessage response = await HttpClient.SendAsync(request);
@@ -238,6 +239,7 @@ namespace HallOfFameSlideshow
 
                 SlideshowImage.Source = bitmap;
                 CityName.Text = image.CityName;
+                CityPopulation.Text = image.CityPopulation.ToString();
                 CityCreator.Text = image.Creator.CreatorName;
                 ImageViews.Text = image.ViewsCount.ToString();
                 ImageLikes.Text = image.FavoritesCount.ToString();
@@ -265,6 +267,7 @@ namespace HallOfFameSlideshow
 
                     SlideshowImage.Source = bitmap;
                     CityName.Text = image.CityName;
+                    CityPopulation.Text = image.CityPopulation.ToString();
                     CityCreator.Text = image.Creator.CreatorName;
                     ImageViews.Text = image.ViewsCount.ToString();
                     ImageLikes.Text = image.FavoritesCount.ToString();
@@ -293,7 +296,7 @@ namespace HallOfFameSlideshow
 
         }
 
-        private async void BtnPlay_Click(object sender, RoutedEventArgs e)
+        private async void btnPlay_Click(object sender, RoutedEventArgs e)
         {
             if (_isPlaying)
             {
@@ -338,6 +341,7 @@ namespace HallOfFameSlideshow
 
                         SlideshowImage.Source = bitmap;
                         CityName.Text = image.CityName;
+                        CityPopulation.Text = image.CityPopulation.ToString();
                         CityCreator.Text = image.Creator.CreatorName;
                         ImageViews.Text = image.ViewsCount.ToString();
                         ImageLikes.Text = image.FavoritesCount.ToString();
@@ -346,7 +350,7 @@ namespace HallOfFameSlideshow
                     }
 
                     // Wait for XX seconds before loading the next image
-                    await Task.Delay(Properties.Settings.Default.SlideShowInterval * 1000, cancellationToken); // delay based on settings property
+                    await Task.Delay(Settings.Default.SlideShowInterval * 1000, cancellationToken); // delay based on settings property
                 }
                 catch (OperationCanceledException)
                 {
@@ -383,6 +387,25 @@ namespace HallOfFameSlideshow
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 this.DragMove();
+            }
+        }
+
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Left:
+                    btnPrevious_ClickAsync(null, null); // Trigger Previous
+                    e.Handled = true;
+                    break;
+                case Key.Right:
+                    btnNext_ClickAsync(null, null); // Trigger Next
+                    e.Handled = true;
+                    break;
+                case Key.Space:
+                    btnPlay_Click(null, null); // Trigger Play/Pause
+                    e.Handled = true;
+                    break;
             }
         }
 
