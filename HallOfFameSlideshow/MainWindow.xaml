@@ -70,18 +70,18 @@
             <Image Name="SlideshowImage" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
             <!-- Semi-Transparent Info Block -->
-            <Border Name="InfoBlock" Background="#60000000" Width="180" Height="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">
+            <Border Name="InfoBlock" Background="#60000000" Width="180" Height="115" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">
                 <StackPanel Margin="10">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Name="CityName" Foreground="White" FontWeight="Bold" FontSize="14"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="pop.: " VerticalAlignment="Bottom" Foreground="White" FontWeight="Bold" FontSize="10"/>
-                        <TextBlock Name="CityPopulation" Foreground="White" FontWeight="Bold" FontSize="12"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
                         <TextBlock Text="by: " VerticalAlignment="Bottom" Foreground="White" FontWeight="Bold" FontSize="10"/>
                         <TextBlock Name="CityCreator" VerticalAlignment="Bottom" Foreground="White" FontSize="12"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="pop: " VerticalAlignment="Bottom" Foreground="White" FontWeight="Bold" FontSize="10"/>
+                        <TextBlock Name="CityPopulation" Foreground="White" FontWeight="Bold" FontSize="10"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="views: " VerticalAlignment="Bottom" Foreground="White" FontWeight="Bold" FontSize="10"/>

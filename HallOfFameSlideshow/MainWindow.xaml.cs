@@ -14,6 +14,7 @@ using System.Text.Json;
 using static System.Net.Mime.MediaTypeNames;
 using HallOfFameSlideshow;
 using System.ComponentModel;
+using System.Configuration;
 
 namespace HallOfFameSlideshow
 {
@@ -109,17 +110,17 @@ namespace HallOfFameSlideshow
             try
             {
                 // Replace with your API endpoint URL
-                string apiUrl = Settings.Default.GetRandomWeightedImageApiEndpoint;
+                string apiUrl = ConfigurationManager.AppSettings["GetRandomWeightedImageApiEndpoint"];
 
                 // Add any properties required for the request
                 var requestData = new
                 {
-                    random = Settings.Default.RandomValue,
-                    trending = Settings.Default.TrendingValue,
-                    recent = Settings.Default.RecentValue,
-                    archeologist = Settings.Default.ArcheologistValue,
-                    supporter = Settings.Default.SupporterValue,
-                    viewMaxAge = Settings.Default.ViewMaxAgeValue
+                    random = ConfigurationManager.AppSettings["RandomValue"],
+                    trending = ConfigurationManager.AppSettings["TrendingValue"],
+                    recent = ConfigurationManager.AppSettings["RecentValue"],
+                    archeologist = ConfigurationManager.AppSettings["ArcheologistValue"],
+                    supporter = ConfigurationManager.AppSettings["SupporterValue"],
+                    viewMaxAge = ConfigurationManager.AppSettings["ViewMaxAgeValue"]
                 };
 
 
@@ -183,7 +184,7 @@ namespace HallOfFameSlideshow
                 using (var request = new HttpRequestMessage(HttpMethod.Get, apiUrl))
                 {
                     // Add Authorization header
-                    request.Headers.Add("Authorization", "Creator name=" + Settings.Default.CreatorName + "&id=" + Settings.Default.CreatorId + "&provider=" + Settings.Default.Provider + "&hwid=" + Settings.Default.HWID);
+                    request.Headers.Add("Authorization", "Creator name=" + ConfigurationManager.AppSettings["CreatorName"] + "&id=" + ConfigurationManager.AppSettings["CreatorId"] + "&provider=paradox&hwid=" + ConfigurationManager.AppSettings["HWID"]);
 
                     // Send the request using the static HttpClient
                     HttpResponseMessage response = await HttpClient.SendAsync(request);
@@ -350,7 +351,7 @@ namespace HallOfFameSlideshow
                     }
 
                     // Wait for XX seconds before loading the next image
-                    await Task.Delay(Settings.Default.SlideShowInterval * 1000, cancellationToken); // delay based on settings property
+                    await Task.Delay(Int32.Parse(ConfigurationManager.AppSettings["SlideShowInterval"]) * 1000, cancellationToken); // delay based on settings property
                 }
                 catch (OperationCanceledException)
                 {

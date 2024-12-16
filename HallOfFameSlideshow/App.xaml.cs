@@ -15,14 +15,30 @@ namespace HallOfFameSlideshow
         {
             base.OnStartup(e);
 
-            string localSettingsPath = "appsettings.local.config";
-            if (File.Exists(localSettingsPath))
+            string configPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.config");
+            string localConfigPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.local.config");
+
+            Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
+
+            // Load appsettings.local.config if it exists, otherwise use appsettings.config
+            
+            
+            if (File.Exists(localConfigPath))
             {
-                ExternallyLoadAppSettings(localSettingsPath);
+                OverrideAppSettings(localConfigPath);
+            }
+            else if (File.Exists(configPath))
+            {
+                OverrideAppSettings(configPath);
+            }
+            else
+            {
+                MessageBox.Show("No configuration file found!");
+                Shutdown();
             }
         }
 
-        private void ExternallyLoadAppSettings(string filePath)
+        private void OverrideAppSettings(string filePath)
         {
             var xmlDoc = new XmlDocument();
             xmlDoc.Load(filePath);
@@ -34,7 +50,7 @@ namespace HallOfFameSlideshow
 
                 if (!string.IsNullOrEmpty(key) && !string.IsNullOrEmpty(value))
                 {
-                    ConfigurationManager.AppSettings.Set(key, value);
+                    ConfigurationManager.AppSettings[key] = value;
                 }
             }
         }
