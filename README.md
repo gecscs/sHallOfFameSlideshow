@@ -5,7 +5,7 @@
 <h3>Important Note</h3>
 <p>Please use this app with moderation by abiding to the following rules of conduct:
   <ul>
-    <li>Restrain from setting the slideshow interval to very low values that imply constant requests to mod creator server and increase massively its contracted network traffic which implies costs for Mod creator;</li>
+    <li>Restrain from setting the slideshow interval to very low values that imply constant requests to mod creator server and increase massively it's contracted network traffic which implies extra costs to the Mod creator;</li>
     <li>Do not leave the slideshow running if you are not paying attention or afk;</li>
     <li>Do not in any way attempt to use this code abusively in such way that might lead to any type of harm or damage to anyone or thing.</li>
   </ul>
