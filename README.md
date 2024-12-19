@@ -26,7 +26,7 @@
     <li>SlideShowInterval: Integer value in seconds. <strong>Please do not go lower than 20</strong> to prevent abuse of traffic usage as explained on the above notes.</li>
     <li><strong>!!! DO NOT CHANGE THE GetRandomWeightedImageApiEndpoint VALUE !!!</strong></li>
   </ul> 
-  Update these settings prior to building or publishing te app, otherwise it will fail to run properly.
+  Update these settings prior to building or publishing the app, otherwise it will fail to run properly.
 </p>
 
 <h2>Keybindings</h2>
