@@ -41,7 +41,7 @@
 <p>
   Toverux's mod code can be found at:
   <ul>
-    <li>https://github.com/toverux/HallOfFameServer</li>
+    <li>https://github.com/toverux/HallOfFame</li>
   </ul>
   
   And you can find the mod itself at:
