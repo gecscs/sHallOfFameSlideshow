@@ -31,8 +31,8 @@
 
 <h2>Keybindings</h2>
 <ul>
-  <li>RightArrow: Load previous image;</li>
-  <li>LeftArrow: Load next image;</li>
+  <li>RightArrow: Load next image;</li>
+  <li>LeftArrow: Load previous image;</li>
   <li>Space: Toggle play/pause slideshow;</li>
 </ul>
 
