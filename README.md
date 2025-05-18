@@ -61,4 +61,4 @@
 
 <h2>Finally</h2>
 <p>I hope you find this app helpful, and that you keep up with my ocasional spam of contributions, in particular from Calabash, and thank you for all the appreciation shown towards my creations.</p>
-<p>I'm Obelix, and I can occasionaly be found on the CS2 Modding discord channel.</p>
+<p>I'm Obelix, and I can occasionally be found on the CS2 Modding discord channel.</p>
