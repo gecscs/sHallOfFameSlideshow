@@ -19,7 +19,7 @@
     <li>[YOUR_HARDWAREID]: Any simple string identifier should suffice as long as you stick to it.</li>
   </ul>
 </p>
-<p>Additionaly, you can set the following parameters:
+<p>Additionally, you can set the following parameters:
   <ul>
     <li>RandomValue, TrendingValue, RecentValue, ArcheologistValue, SupporterValue: Integer values from 0 to 10. These are the same as in the ingame mod settings;</li>
     <li>ViewMaxAgeValue: Integer value in days;</li>
