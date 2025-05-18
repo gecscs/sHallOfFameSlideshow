@@ -1,6 +1,6 @@
 <h1>Hall of Fame Slideshow</h1>
 <h2>Description</h2>
-<p>This Windows App intends to provide a way to navigate or slideshow the Cities: Skylines II images captured by the exelent mod created by Toverux outside of the game itself, saving the heavy cpu and memory load that it forces and still allowing you to see everyone's creations on out favorite game.</p>
+<p>This Windows App intends to provide a way to navigate or slideshow the Cities: Skylines II images captured by the excelent mod created by Toverux outside of the game itself, saving the heavy cpu and memory load that it forces and still allowing you to see everyone's creations on out favorite game.</p>
 <p>If you, like me, love just sitting back and enjoy seeing the creations by the CS2 community, either to relax or to provide you with inspiration for your own creations, please feel free to download and build this app on your computer.</p>
 <h3>Important Note</h3>
 <p>Please use this app with moderation by abiding to the following rules of conduct:
